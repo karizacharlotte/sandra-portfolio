@@ -177,10 +177,12 @@ header {
     background: rgba(21, 101, 192, 0.1);
     border-radius: 8px;
     transition: background 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .hamburger-menu:hover {
     background: rgba(21, 101, 192, 0.2);
+    border-color: rgba(21, 101, 192, 0.3);
 }
 
 .hamburger-menu span {
@@ -190,6 +192,11 @@ header {
     border-radius: 2px;
     transition: all 0.3s ease;
     transform-origin: center;
+    display: block;
+}
+
+.hamburger-menu.active {
+    background: rgba(21, 101, 192, 0.2);
 }
 
 .hamburger-menu.active span:nth-child(1) {
