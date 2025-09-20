@@ -6,6 +6,7 @@
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -16,6 +17,8 @@ body {
     margin-top: 90px; /* Adjust to header height for spacing */
     line-height: 1.6;
     overflow-x: hidden; /* Prevent horizontal scroll */
+    width: 100%;
+    max-width: 100vw;
 }
 
 /* Responsive images and media */
@@ -30,6 +33,21 @@ img, video, iframe {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+}
+
+/* Section width control */
+section {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Prevent any element from causing horizontal overflow */
+.hero-section, .about-section, .resume-section, .timeline-section, .reflection-section, .footer-section {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 /* Touch-friendly buttons and links */
@@ -66,6 +84,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
+    max-width: 100vw;
     z-index: 100;
     box-shadow: 0 2px 8px rgba(21,101,192,0.07);
     display: flex;
@@ -73,6 +92,8 @@ header {
     justify-content: space-evenly;
     padding: 0.2rem 2.5rem 0.2rem 2.5rem;
     min-height: 44px;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 .nav-left {
     display: flex;
@@ -148,16 +169,23 @@ header {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 28px;
-    height: 21px;
+    width: 35px;
+    height: 28px;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.8rem;
     z-index: 1001;
+    background: rgba(21, 101, 192, 0.1);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    background: rgba(21, 101, 192, 0.2);
 }
 
 .hamburger-menu span {
     width: 100%;
-    height: 3px;
+    height: 4px;
     background: #1565c0;
     border-radius: 2px;
     transition: all 0.3s ease;
@@ -165,7 +193,7 @@ header {
 }
 
 .hamburger-menu.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: rotate(45deg) translate(7px, 7px);
 }
 
 .hamburger-menu.active span:nth-child(2) {
@@ -173,7 +201,7 @@ header {
 }
 
 .hamburger-menu.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 .hero-section {
     background: linear-gradient(135deg, #e3f8ff 0%, #cce3ff 100%);
@@ -243,8 +271,8 @@ header {
     box-shadow: 0 12px 40px rgba(33,145,80,0.12);
 }
 .profile-pic {
-    width: 400px;
-    height: 400px;
+    width: 420px;
+    height: 420px;
     object-fit: cover;
     border-radius: 32px;
     background: #fff;
@@ -505,15 +533,21 @@ footer {
     align-items: flex-start;
     max-width: 900px;
     margin: 2rem auto 0 auto;
+    width: calc(100% - 2rem);
+    overflow: hidden;
+    box-sizing: border-box;
 }
 .resume-info {
     flex: 1;
     color: #fff;
+    min-width: 0;
+    word-wrap: break-word;
 }
 .resume-name {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
+    word-wrap: break-word;
 }
 .resume-contact {
     list-style: none;
@@ -526,6 +560,8 @@ footer {
     display: flex;
     align-items: center;
     gap: 0.7rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .resume-icon {
     font-size: 1.2rem;
@@ -542,6 +578,9 @@ footer {
     color: #fff;
     box-shadow: 0 2px 8px rgba(21,101,192,0.08);
     margin-left: 1rem;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .mission-title {
     font-size: 1.2rem;
@@ -979,14 +1018,14 @@ footer {
         padding: 0.8rem 1rem;
     }
     .profile-layers {
-        width: 280px;
-        height: 280px;
-        min-width: 280px;
-        min-height: 280px;
+        width: 320px;
+        height: 320px;
+        min-width: 320px;
+        min-height: 320px;
     }
     .profile-pic {
-        width: 220px;
-        height: 220px;
+        width: 280px;
+        height: 280px;
     }
     .about-section {
         padding: 2rem 1rem;
@@ -1066,8 +1105,9 @@ footer {
         font-size: 0.85rem;
     }
     .hamburger-menu {
-        width: 25px;
-        height: 18px;
+        width: 32px;
+        height: 25px;
+        padding: 0.6rem;
     }
     .nav-links a {
         font-size: 0.9rem;
@@ -1083,14 +1123,14 @@ footer {
         font-size: 1rem;
     }
     .profile-layers {
-        width: 240px;
-        height: 240px;
-        min-width: 240px;
-        min-height: 240px;
+        width: 280px;
+        height: 280px;
+        min-width: 280px;
+        min-height: 280px;
     }
     .profile-pic {
-        width: 180px;
-        height: 180px;
+        width: 240px;
+        height: 240px;
     }
     .about-title {
         font-size: 1.5rem;
@@ -1127,8 +1167,9 @@ footer {
         padding: 0.2rem 0.5rem;
     }
     .hamburger-menu {
-        width: 22px;
-        height: 16px;
+        width: 28px;
+        height: 22px;
+        padding: 0.5rem;
     }
     .nav-links a {
         font-size: 0.85rem;
@@ -1144,14 +1185,14 @@ footer {
         font-size: 0.9rem;
     }
     .profile-layers {
-        width: 200px;
-        height: 200px;
-        min-width: 200px;
-        min-height: 200px;
+        width: 240px;
+        height: 240px;
+        min-width: 240px;
+        min-height: 240px;
     }
     .profile-pic {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
     }
     .mission-cube {
         margin: 0 0.2rem;
