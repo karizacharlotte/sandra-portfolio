@@ -258,15 +258,16 @@ header {
 }
 .profile-pic-frame {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 440px;
     height: 440px;
     border-radius: 40px;
     overflow: hidden;
     z-index: 4;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     box-shadow: 0 12px 40px rgba(33,145,80,0.12);
 }
@@ -277,7 +278,6 @@ header {
     border-radius: 32px;
     background: #fff;
     box-shadow: 0 6px 24px rgba(33,145,80,0.12);
-    margin-bottom: 10px;
 }
 .badge {
     position: absolute;
@@ -886,7 +886,7 @@ footer {
         order: 1;
         flex: 1;
     }
-    .nav-right {
+    .nav-right.nav-links {
         order: 3;
         position: absolute;
         top: 100%;
@@ -902,21 +902,27 @@ footer {
         transition: all 0.3s ease;
         z-index: 1000;
         padding: 1rem 0;
+        border-radius: 0 0 12px 12px;
     }
-    .nav-right.active {
+    .nav-right.nav-links.active {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
     }
-    .nav-right a {
+    .nav-right.nav-links a {
         padding: 0.8rem 1.5rem;
         width: 100%;
         text-align: left;
         border-radius: 0;
         border-bottom: 1px solid #f0f0f0;
+        display: block;
     }
-    .nav-right a:last-child {
+    .nav-right.nav-links a:last-child {
         border-bottom: none;
+    }
+    .nav-right.nav-links a:hover {
+        background: #e3f0ff;
+        color: #1565c0;
     }
     .hamburger-menu {
         display: flex;
@@ -982,10 +988,10 @@ footer {
     .hamburger-menu {
         display: flex;
     }
-    .nav-right {
+    .nav-right.nav-links {
         gap: 0;
     }
-    .nav-links a {
+    .nav-right.nav-links a {
         font-size: 0.9rem;
         padding: 0.8rem 1.5rem;
     }
@@ -1109,7 +1115,7 @@ footer {
         height: 25px;
         padding: 0.6rem;
     }
-    .nav-links a {
+    .nav-right.nav-links a {
         font-size: 0.9rem;
         padding: 0.8rem 1rem;
     }
@@ -1171,7 +1177,7 @@ footer {
         height: 22px;
         padding: 0.5rem;
     }
-    .nav-links a {
+    .nav-right.nav-links a {
         font-size: 0.85rem;
         padding: 0.7rem 0.8rem;
     }

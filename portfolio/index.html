@@ -206,7 +206,7 @@
     <script>
         // Mobile menu toggle functionality
         const hamburger = document.getElementById('hamburger');
-        const navLinks = document.querySelector('.nav-links');
+        const navLinks = document.querySelector('.nav-right.nav-links');
         
         hamburger.addEventListener('click', function() {
             navLinks.classList.toggle('active');
@@ -214,7 +214,7 @@
         });
 
         // Close menu when clicking on a link
-        const navItems = document.querySelectorAll('.nav-links a');
+        const navItems = document.querySelectorAll('.nav-right.nav-links a');
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 navLinks.classList.remove('active');
