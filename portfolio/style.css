@@ -819,7 +819,7 @@ footer {
     }
 }
 
-/* Desktop navigation - show nav-links, hide hamburger */
+/* Desktop navigation - show nav-right, hide hamburger */
 .nav-right {
     display: flex;
     gap: 1.8rem;
@@ -829,7 +829,18 @@ footer {
     display: none;
 }
 
-/* Tablet and Mobile - hide nav-links, show hamburger */
+/* TEST: Show hamburger on all screen sizes for debugging */
+@media (max-width: 1200px) {
+    .hamburger-menu {
+        display: flex !important;
+        background: red !important;
+    }
+    .nav-right {
+        background: yellow !important;
+    }
+}
+
+/* Tablet and Mobile - hide nav-right, show hamburger */
 @media (max-width: 900px) {
     .main-nav {
         padding: 0.3rem 1rem;

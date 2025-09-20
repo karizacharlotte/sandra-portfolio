@@ -13,7 +13,7 @@
           <div class="header-title">Ngoga Sandra</div>
           <div class="header-subtitle">Resource Mobilizer &bull; Ethical Leader</div>
         </div>
-        <div class="nav-right nav-links">
+        <div class="nav-right">
           <a href="#home">Home</a>
           <a href="#portfolio">Portfolio</a>
           <a href="#resume">Resume</a>
@@ -97,12 +97,7 @@
                         <li><span class="resume-icon">🔗</span><a href="NGOGASandra-CV.pdf" class="btn btn-blue" target="_blank">Download CV</a> <a href="https://www.linkedin.com/in/ngoga-sandra" class="btn btn-blue" target="_blank">linkedin.com/in/ngoga-sandra</a></li>
                     </ul>
                 </div>
-                <div class="resume-mission">
-                    <h3><span class="mission-icon">🎯</span> Mission Statement</h3>
-                    <p class="mission-text">
-                      "To empower others through entrepreneurial leadership, driving positive change and sustainable impact in my community and beyond."
-                    </p>
-                </div>
+                
             </div>
         </section>
         <section id="reflection" class="reflection-section">
@@ -196,46 +191,19 @@
     <!-- End Footer Section -->
 
     <script>
-        // Wait for DOM to be fully loaded
+        // Simple hamburger menu toggle
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.getElementById('hamburger');
-            const navLinks = document.querySelector('.nav-right');
+            const nav = document.querySelector('.nav-right');
             
-            console.log('DOM loaded. Hamburger:', hamburger);
-            console.log('Nav Links:', navLinks);
+            console.log('Elements found:', hamburger, nav);
             
-            if (hamburger && navLinks) {
-                hamburger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Hamburger clicked!');
-                    
-                    // Toggle the active class
-                    navLinks.classList.toggle('active');
-                    hamburger.classList.toggle('active');
-                    
-                    console.log('Active classes - Nav:', navLinks.classList.contains('active'), 'Hamburger:', hamburger.classList.contains('active'));
-                });
-
-                // Close menu when clicking on a link
-                const navItems = document.querySelectorAll('.nav-right a');
-                navItems.forEach(item => {
-                    item.addEventListener('click', () => {
-                        navLinks.classList.remove('active');
-                        hamburger.classList.remove('active');
-                    });
-                });
-
-                // Close menu when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
-                        navLinks.classList.remove('active');
-                        hamburger.classList.remove('active');
-                    }
-                });
-            } else {
-                console.error('Hamburger or nav-links not found!');
-            }
+            hamburger.onclick = function() {
+                console.log('Hamburger clicked!');
+                nav.classList.toggle('active');
+                hamburger.classList.toggle('active');
+                console.log('Nav active:', nav.classList.contains('active'));
+            };
         });
     </script>
 </body>
