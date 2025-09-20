@@ -19,6 +19,11 @@
           <a href="#resume">Resume</a>
           <a href="#reflection">Reflection</a>
         </div>
+        <div class="hamburger-menu" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </nav>
     </header>
     <section id="home" class="hero-section">
@@ -197,5 +202,33 @@
       </div>
     </footer>
     <!-- End Footer Section -->
+
+    <script>
+        // Mobile menu toggle functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
