@@ -220,64 +220,24 @@ header {
     max-width: 1200px;
     margin: 0 auto;
 }
-.profile-card, .profile-layers {
+.profile-card {
     position: relative;
-    width: 480px;
-    height: 480px;
+    width: 320px;
+    height: 320px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
 }
-.layer {
-    position: absolute;
-    width: 440px;
-    height: 440px;
-    border-radius: 40px;
-    box-shadow: 0 12px 40px rgba(33,145,80,0.10);
-}
-.layer-green, .layer-blue {
-    background: #1565c0;
-    top: 36px;
-    left: 36px;
-    z-index: 1;
-    transform: rotate(-6deg);
-}
-.layer-orange, .layer-white {
-    background: #f8f7f6;
-    top: 18px;
-    left: 18px;
-    z-index: 2;
-    transform: rotate(4deg);
-}
-.layer-pink, .layer-accent {
-    background: #b0e6dd;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    transform: rotate(-2deg);
-}
-.profile-pic-frame {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 440px;
-    height: 440px;
-    border-radius: 40px;
-    overflow: hidden;
-    z-index: 4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 12px 40px rgba(33,145,80,0.12);
-}
+
 .profile-pic {
-    width: 420px;
-    height: 420px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
-    border-radius: 32px;
+    border-radius: 20px;
     background: #fff;
-    box-shadow: 0 6px 24px rgba(33,145,80,0.12);
+    box-shadow: 0 12px 40px rgba(21,101,192,0.15);
+    border: 4px solid #fff;
 }
 .badge {
     position: absolute;
@@ -874,7 +834,17 @@ footer {
     }
 }
 
-/* Tablet */
+/* Desktop navigation - show nav-links, hide hamburger */
+.nav-right {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+}
+.hamburger-menu {
+    display: none;
+}
+
+/* Tablet and Mobile - hide nav-links, show hamburger */
 @media (max-width: 900px) {
     .main-nav {
         padding: 0.3rem 1rem;
@@ -886,7 +856,7 @@ footer {
         order: 1;
         flex: 1;
     }
-    .nav-right.nav-links {
+    .nav-right {
         order: 3;
         position: absolute;
         top: 100%;
@@ -904,12 +874,12 @@ footer {
         padding: 1rem 0;
         border-radius: 0 0 12px 12px;
     }
-    .nav-right.nav-links.active {
+    .nav-right.active {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
     }
-    .nav-right.nav-links a {
+    .nav-right a {
         padding: 0.8rem 1.5rem;
         width: 100%;
         text-align: left;
@@ -917,10 +887,10 @@ footer {
         border-bottom: 1px solid #f0f0f0;
         display: block;
     }
-    .nav-right.nav-links a:last-child {
+    .nav-right a:last-child {
         border-bottom: none;
     }
-    .nav-right.nav-links a:hover {
+    .nav-right a:hover {
         background: #e3f0ff;
         color: #1565c0;
     }
@@ -988,10 +958,10 @@ footer {
     .hamburger-menu {
         display: flex;
     }
-    .nav-right.nav-links {
+    .nav-right {
         gap: 0;
     }
-    .nav-right.nav-links a {
+    .nav-right a {
         font-size: 0.9rem;
         padding: 0.8rem 1.5rem;
     }
@@ -1023,15 +993,13 @@ footer {
         text-align: center;
         padding: 0.8rem 1rem;
     }
-    .profile-layers {
-        width: 320px;
-        height: 320px;
-        min-width: 320px;
-        min-height: 320px;
-    }
-    .profile-pic {
+    .profile-card {
         width: 280px;
         height: 280px;
+    }
+    .profile-pic {
+        width: 260px;
+        height: 260px;
     }
     .about-section {
         padding: 2rem 1rem;
@@ -1115,7 +1083,7 @@ footer {
         height: 25px;
         padding: 0.6rem;
     }
-    .nav-right.nav-links a {
+    .nav-right a {
         font-size: 0.9rem;
         padding: 0.8rem 1rem;
     }
@@ -1128,15 +1096,13 @@ footer {
     .subtitle {
         font-size: 1rem;
     }
-    .profile-layers {
-        width: 280px;
-        height: 280px;
-        min-width: 280px;
-        min-height: 280px;
-    }
-    .profile-pic {
+    .profile-card {
         width: 240px;
         height: 240px;
+    }
+    .profile-pic {
+        width: 220px;
+        height: 220px;
     }
     .about-title {
         font-size: 1.5rem;
@@ -1177,7 +1143,7 @@ footer {
         height: 22px;
         padding: 0.5rem;
     }
-    .nav-right.nav-links a {
+    .nav-right a {
         font-size: 0.85rem;
         padding: 0.7rem 0.8rem;
     }
@@ -1190,15 +1156,13 @@ footer {
     .subtitle {
         font-size: 0.9rem;
     }
-    .profile-layers {
-        width: 240px;
-        height: 240px;
-        min-width: 240px;
-        min-height: 240px;
-    }
-    .profile-pic {
+    .profile-card {
         width: 200px;
         height: 200px;
+    }
+    .profile-pic {
+        width: 180px;
+        height: 180px;
     }
     .mission-cube {
         margin: 0 0.2rem;

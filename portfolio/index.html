@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="    <section id="home" class="hero-section">
+            <div class="hero-content custom-hero">
+                <div class="profile-card">
+                    <img src="sandra.jpeg" alt="Ngoga Sandra" class="profile-pic">
+                    <div class="badge badge-top-left">Entrepreneurial Leader</div>
+                </div>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ngoga Sandra Portfolio</title>
@@ -206,29 +210,40 @@
     <script>
         // Mobile menu toggle functionality
         const hamburger = document.getElementById('hamburger');
-        const navLinks = document.querySelector('.nav-right.nav-links');
+        const navLinks = document.querySelector('.nav-right');
         
-        hamburger.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        const navItems = document.querySelectorAll('.nav-right.nav-links a');
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
+        console.log('Hamburger:', hamburger);
+        console.log('Nav Links:', navLinks);
+        
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Hamburger clicked!');
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+                console.log('Nav has active class:', navLinks.classList.contains('active'));
             });
-        });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        });
+            // Close menu when clicking on a link
+            const navItems = document.querySelectorAll('.nav-right a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        } else {
+            console.error('Hamburger or nav-links not found!');
+        }
     </script>
 </body>
 </html>
