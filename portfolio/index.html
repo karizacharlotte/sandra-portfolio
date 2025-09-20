@@ -1,209 +1,890 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ngoga Sandra Portfolio</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngoga Sandra Portfolio</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #d6f5e6 0%, #e3f8ff 100%);
+            color: #222;
+            line-height: 1.6;
+            margin-top: 80px;
+        }
+
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(21,101,192,0.08);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1565c0;
+            line-height: 1.1;
+        }
+
+        .header-subtitle {
+            font-size: 0.9rem;
+            color: #757575;
+            margin-top: 0.2rem;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-right a {
+            color: #222;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-right a:hover {
+            background: #e3f0ff;
+            color: #1565c0;
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger-menu span {
+            width: 100%;
+            height: 3px;
+            background: #1565c0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #e3f8ff 0%, #cce3ff 100%);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .profile-card {
+            flex-shrink: 0;
+        }
+
+        .profile-pic {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(21,101,192,0.15);
+            border: 4px solid #fff;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .main-title {
+            color: #1565c0;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            background: #1565c0;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            min-height: 44px;
+        }
+
+        .btn:hover {
+            background: #0d47a1;
+            transform: translateY(-2px);
+        }
+
+        .btn-white {
+            background: #fff;
+            color: #1565c0;
+            border: 2px solid #1565c0;
+        }
+
+        .btn-white:hover {
+            background: #e3f0ff;
+        }
+
+        /* Sections */
+        .section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-bg {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(21,101,192,0.08);
+            margin: 2rem auto;
+            max-width: 1200px;
+            width: calc(100% - 4rem);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: #1565c0;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* About Section */
+        .about-desc {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .mission-cube {
+            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            color: #fff;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .mission-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .mission-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Portfolio Section */
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(21,101,192,0.08);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(21,101,192,0.12);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1565c0;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            margin-bottom: 1.5rem;
+            color: #444;
+        }
+
+        /* Resume Section */
+        .resume-section {
+            background: linear-gradient(90deg, #f5fff8 0%, #e3f8ff 100%);
+        }
+
+        .resume-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .resume-card {
+            background: #1565c0;
+            border-radius: 20px;
+            padding: 2rem;
+            color: #fff;
+        }
+
+        .resume-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .resume-contact {
+            list-style: none;
+        }
+
+        .resume-contact li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resume-contact a {
+            color: #e3f8ff;
+            text-decoration: none;
+        }
+
+        .resume-contact a:hover {
+            color: #fff;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-event {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #1565c0;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            margin-right: 1.5rem;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(21,101,192,0.2);
+        }
+
+        .timeline-content {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 16px rgba(21,101,192,0.08);
+            flex: 1;
+        }
+
+        .timeline-content h3 {
+            color: #1565c0;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .timeline-content p {
+            color: #444;
+            margin: 0;
+        }
+
+        /* Reflection Section */
+        .reflection-frame {
+            background: #1565c0;
+            border-radius: 20px;
+            padding: 2rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        .reflection-desc {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #e3f8ff;
+        }
+
+        .reflection-link {
+            background: #fff;
+            color: #1565c0;
+        }
+
+        /* Footer */
+        .footer-section {
+            background: #1565c0;
+            color: #fff;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-list {
+            list-style: none;
+        }
+
+        .footer-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-list a {
+            color: #e3f8ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-list a:hover {
+            color: #fff;
+        }
+
+        .footer-linkedin {
+            background: rgba(255,255,255,0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .footer-linkedin:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: #e3f8ff;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                gap: 2rem;
+            }
+
+            .profile-pic {
+                width: 250px;
+                height: 250px;
+            }
+
+            .main-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                padding: 1rem;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .nav-right {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 250px;
+                height: calc(100vh - 80px);
+                background: #fff;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 2rem 1rem;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+                transition: right 0.3s ease;
+                gap: 1rem;
+            }
+
+            .nav-right.active {
+                right: 0;
+            }
+
+            .nav-right a {
+                width: 100%;
+                padding: 1rem;
+                text-align: center;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-pic {
+                width: 220px;
+                height: 220px;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .project-list {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .timeline-event {
+                align-items: center;
+            }
+
+            .timeline-dot {
+                margin-right: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                margin-top: 70px;
+            }
+
+            .header-title {
+                font-size: 1.4rem;
+            }
+
+            .header-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .profile-pic {
+                width: 180px;
+                height: 180px;
+            }
+
+            .main-title {
+                font-size: 1.6rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .mission-cube, .reflection-frame, .resume-card {
+                padding: 1.5rem;
+            }
+
+            .timeline-content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .section {
+                padding: 1.5rem 0.5rem;
+            }
+
+            .main-title {
+                font-size: 1.4rem;
+            }
+
+            .profile-pic {
+                width: 160px;
+                height: 160px;
+            }
+
+            .btn {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Fix for character encoding issues */
+        .icon-download::before {
+            content: '↓';
+            margin-right: 8px;
+        }
+
+        .icon-linkedin::before {
+            content: '🔗';
+            margin-right: 8px;
+        }
+    </style>
+</head>
 <body>
     <header>
-      <nav class="main-nav">
-        <div class="nav-left">
-          <div class="header-title">Ngoga Sandra</div>
-          <div class="header-subtitle">Resource Mobilizer &bull; Ethical Leader</div>
-        </div>
-        <div class="nav-right">
-          <a href="#home">Home</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#resume">Resume</a>
-          <a href="#reflection">Reflection</a>
-        </div>
-        <div class="hamburger-menu" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
+        <nav class="main-nav">
+            <div class="nav-left">
+                <div class="header-title">Ngoga Sandra</div>
+                <div class="header-subtitle">Resource Mobilizer • Ethical Leader</div>
+            </div>
+            <div class="nav-right" id="navRight">
+                <a href="#home">Home</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#resume">Resume</a>
+                <a href="#reflection">Reflection</a>
+            </div>
+            <div class="hamburger-menu" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
     </header>
+
     <section id="home" class="hero-section">
-            <div class="hero-content custom-hero">
-                <div class="profile-card">
-                    <img src="sandra.jpeg" alt="Ngoga Sandra" class="profile-pic">
-                </div>
-                <div class="hero-text custom-hero-text">
-                    <h1 class="main-title green">Ngoga Sandra</h1>
-                    <h2 class="subtitle bold">Resource Mobilizer &bull; Ethical Leader</h2>
-                    <div class="hero-buttons custom-hero-btns">
-                        <a href="NGOGASandra-CV.pdf" class="btn btn-blue" target="_blank">
-                            <span class="icon-download"></span> Download CV
-                        </a>
-                        <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=ngoga-sandra-0048b2383" class="btn btn-white" target="_blank">
-                            <span class="icon-linkedin"></span> LinkedIn
-                        </a>
-                    </div>
+        <div class="hero-content">
+            <div class="profile-card">
+                <img src="sandra.jpeg" alt="Ngoga Sandra" class="profile-pic">
+            </div>
+            <div class="hero-text">
+                <h1 class="main-title">Ngoga Sandra</h1>
+                <h2 class="subtitle">Resource Mobilizer • Ethical Leader</h2>
+                <div class="hero-buttons">
+                    <a href="NGOGASandra-CV.pdf" class="btn" target="_blank">
+                        <span class="icon-download"></span> Download CV
+                    </a>
+                    <a href="https://www.linkedin.com/in/ngoga-sandra" class="btn btn-white" target="_blank">
+                        <span class="icon-linkedin"></span> LinkedIn
+                    </a>
                 </div>
             </div>
+        </div>
     </section>
-    <!-- About Me Section -->
-    <section class="about-section">
-      <h2 class="about-title">About Me</h2>
-      <div class="about-desc">
-        Ngoga Sandra is a dedicated entrepreneurial leader pursuing a Bachelor’s degree in Entrepreneurial Leadership at African Leadership University. My professional journey spans finance, operations, and social impact initiatives, with a strong focus on creating sustainable solutions for African communities.<br><br>
-        Currently, I serve as a project coordinator, leading financial operations and strategy for local enterprises, while also managing initiatives that promote mental health and youth empowerment. My approach combines strategic thinking with a deep commitment to social impact, always seeking to balance profitability with purpose-driven outcomes.
-      </div>
-      <div class="mission-cube">
-        <h3 class="mission-title">My Mission</h3>
-        <p class="mission-text">To empower others through entrepreneurial leadership, driving positive change and sustainable impact in my community and beyond.</p>
-      </div>
+
+    <section class="section section-bg">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-desc">
+            Ngoga Sandra is a dedicated entrepreneurial leader pursuing a Bachelor's degree in Entrepreneurial Leadership at African Leadership University. My professional journey spans finance, operations, and social impact initiatives, with a strong focus on creating sustainable solutions for African communities.
+            <br><br>
+            Currently, I serve as a project coordinator, leading financial operations and strategy for local enterprises, while also managing initiatives that promote mental health and youth empowerment. My approach combines strategic thinking with a deep commitment to social impact, always seeking to balance profitability with purpose-driven outcomes.
+        </div>
+        <div class="mission-cube">
+            <h3 class="mission-title">My Mission</h3>
+            <p class="mission-text">To empower others through entrepreneurial leadership, driving positive change and sustainable impact in my community and beyond.</p>
+        </div>
     </section>
-    <!-- End About Me Section -->
-    <section id="portfolio">
-            <h2>Portfolio</h2>
-            <div class="project-list professional-cards">
-                <div class="project card">
-                    <h3 class="card-title">Celebrating Women’s Day at Gafico Ltd</h3>
-                    <p class="card-subtitle">Leadership & Empowerment Event</p>
-                    <p>A short video highlighting the celebration of women’s day at Gafico Ltd, showcasing leadership, empowerment, and community spirit.</p>
-                    <a href="https://youtu.be/fKwOGS0N9gQ" target="_blank" class="btn btn-outline">Watch Video</a>
-                </div>
-                <div class="project card">
-                    <h3 class="card-title">Empowering Communities through AI</h3>
-                    <p class="card-subtitle">Documentary on Innovation</p>
-                    <p>This documentary explores how artificial intelligence is being used to empower communities, drive innovation, and create positive change.</p>
-                    <a href="https://www.youtube.com/watch?v=vmFTT8qgeNs" target="_blank" class="btn btn-outline">Watch Documentary</a>
-                </div>
-                <div class="project card">
-                    <h3 class="card-title">Kuza Digital Initiative</h3>
-                    <p class="card-subtitle">Digital Transformation Project</p>
-                    <p>An inspiring look at the Kuza Digital Initiative, focused on digital transformation and opportunities for youth and local entrepreneurs.</p>
-                    <a href="https://www.youtube.com/watch?v=f7ASzmvR4pc" target="_blank" class="btn btn-outline">Watch Documentary</a>
-                </div>
+
+    <section id="portfolio" class="section">
+        <h2 class="section-title">Portfolio</h2>
+        <div class="project-list">
+            <div class="card">
+                <h3 class="card-title">Celebrating Women's Day at Gafico Ltd</h3>
+                <p class="card-subtitle">Leadership & Empowerment Event</p>
+                <p>A short video highlighting the celebration of women's day at Gafico Ltd, showcasing leadership, empowerment, and community spirit.</p>
+                <a href="https://youtu.be/fKwOGS0N9gQ" target="_blank" class="btn">Watch Video</a>
             </div>
-        </section>
-        <section id="resume" class="resume-section">
-            <div class="resume-header">
-                <h2 class="resume-title">Professional Resume</h2>
-                <a href="NgogaSandraCV.pdf" class="btn btn-green resume-download" target="_blank">&#128190; Download PDF</a>
+            <div class="card">
+                <h3 class="card-title">Empowering Communities through AI</h3>
+                <p class="card-subtitle">Documentary on Innovation</p>
+                <p>This documentary explores how artificial intelligence is being used to empower communities, drive innovation, and create positive change.</p>
+                <a href="https://www.youtube.com/watch?v=vmFTT8qgeNs" target="_blank" class="btn">Watch Documentary</a>
             </div>
-            <p class="resume-summary">Comprehensive overview of my experience, skills, and achievements in entrepreneurial leadership and finance.</p>
-            <div class="resume-card">
-                <div class="resume-info">
-                    <h3 class="resume-name">Ngoga Sandra</h3>
-                    <ul class="resume-contact">
-                        <li><span class="resume-icon">📍</span> Kigali, , Rwanda</li>
-                        <li><span class="resume-icon">✉️</span> ngogasandra1@gmail.com</li>
-                        <li><span class="resume-icon">📞</span> +250 788 207 666</li>
-                        <li><span class="resume-icon">🔗</span><a href="NGOGASandra-CV.pdf" class="btn btn-blue" target="_blank">Download CV</a> <a href="https://www.linkedin.com/in/ngoga-sandra" class="btn btn-blue" target="_blank">linkedin.com/in/ngoga-sandra</a></li>
-                    </ul>
-                </div>
-                
+            <div class="card">
+                <h3 class="card-title">Kuza Digital Initiative</h3>
+                <p class="card-subtitle">Digital Transformation Project</p>
+                <p>An inspiring look at the Kuza Digital Initiative, focused on digital transformation and opportunities for youth and local entrepreneurs.</p>
+                <a href="https://www.youtube.com/watch?v=f7ASzmvR4pc" target="_blank" class="btn">Watch Documentary</a>
             </div>
-        </section>
-        <section id="reflection" class="reflection-section">
-            <div class="reflection-header">
-                <h2 class="reflection-title">Professional Reflection</h2>
-            </div>
-            <div class="reflection-frame">
-                <p class="reflection-desc">
-                    This section presents a thoughtful reflection on my entrepreneurial leadership journey, highlighting key lessons, personal growth, and the impact of my experiences. It offers insights into my values, decision-making, and vision for the future as a leader.
-                </p>
-                <a href="https://docs.google.com/document/d/1sbhYGWlRMDmLjEFcKnuQ2jOfytrXuzXZ_9JTV2lrcmY/edit?usp=sharing" target="_blank" class="btn btn-blue reflection-link">Read Full Reflection</a>
-            </div>
-        </section>
-        <!-- Timeline section will be added next -->
-        <section class="timeline-section">
-            <h2 class="timeline-title">Entrepreneurial Leadership Timeline</h2>
-            <div class="timeline-container">
-                <div class="timeline">
-                    <div class="timeline-event">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>2023: Joined African Leadership University</h3>
-                            <p>Began my journey in the Bachelor of Entrepreneurial Leadership program, building foundational skills in leadership and innovation.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-event">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>2023: Led Women’s Day Event at Gafico Ltd</h3>
-                            <p>Organized and led a major event celebrating women’s achievements, strengthening my project management and leadership skills.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-event">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>2024: Internship at Local Startup</h3>
-                            <p>Worked as a business development intern, contributing to strategic planning and market research for a growing startup.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-event">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>2024: Launched Community Empowerment Project</h3>
-                            <p>Founded a project focused on empowering local entrepreneurs, providing training and mentorship to over 50 participants.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-event">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>2025: Presented at Regional Leadership Summit</h3>
-                            <p>Shared insights and experiences as a panelist, inspiring others to pursue entrepreneurial leadership and social impact.</p>
-                        </div>
-                    </div>
+        </div>
+    </section>
+
+    <section id="resume" class="section section-bg resume-section">
+        <div class="resume-header">
+            <h2 class="section-title">Professional Resume</h2>
+            <a href="NGOGASandra-CV.pdf" class="btn" target="_blank">📄 Download PDF</a>
+        </div>
+        <p class="text-center" style="margin-bottom: 2rem; color: #666;">Comprehensive overview of my experience, skills, and achievements in entrepreneurial leadership and finance.</p>
+        <div class="resume-card">
+            <h3 class="resume-name">Ngoga Sandra</h3>
+            <ul class="resume-contact">
+                <li>📍 Kigali, Rwanda</li>
+                <li>✉️ ngogasandra1@gmail.com</li>
+                <li>📞 +250 788 207 666</li>
+                <li><a href="https://www.linkedin.com/in/ngoga-sandra" target="_blank">🔗 LinkedIn Profile</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Entrepreneurial Leadership Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-event">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2023: Joined African Leadership University</h3>
+                    <p>Began my journey in the Bachelor of Entrepreneurial Leadership program, building foundational skills in leadership and innovation.</p>
                 </div>
             </div>
-        </section>
-    <!-- Footer Section -->
+            <div class="timeline-event">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2023: Led Women's Day Event at Gafico Ltd</h3>
+                    <p>Organized and led a major event celebrating women's achievements, strengthening my project management and leadership skills.</p>
+                </div>
+            </div>
+            <div class="timeline-event">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2024: Internship at Local Startup</h3>
+                    <p>Worked as a business development intern, contributing to strategic planning and market research for a growing startup.</p>
+                </div>
+            </div>
+            <div class="timeline-event">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2024: Launched Community Empowerment Project</h3>
+                    <p>Founded a project focused on empowering local entrepreneurs, providing training and mentorship to over 50 participants.</p>
+                </div>
+            </div>
+            <div class="timeline-event">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2025: Presented at Regional Leadership Summit</h3>
+                    <p>Shared insights and experiences as a panelist, inspiring others to pursue entrepreneurial leadership and social impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reflection" class="section section-bg">
+        <h2 class="section-title">Professional Reflection</h2>
+        <div class="reflection-frame">
+            <p class="reflection-desc">
+                This section presents a thoughtful reflection on my entrepreneurial leadership journey, highlighting key lessons, personal growth, and the impact of my experiences. It offers insights into my values, decision-making, and vision for the future as a leader.
+            </p>
+            <a href="https://docs.google.com/document/d/1sbhYGWlRMDmLjEFcKnuQ2jOfytrXuzXZ_9JTV2lrcmY/edit?usp=sharing" target="_blank" class="btn reflection-link">Read Full Reflection</a>
+        </div>
+    </section>
+
     <footer class="footer-section">
-      <div class="footer-content">
-        <div class="footer-col">
-          <div class="footer-icon email-icon"></div>
-          <div class="footer-title">Contact Information</div>
-          <ul class="footer-list">
-            <li><span class="footer-list-icon email-icon"></span> ngogasandra1@gmail.com</li>
-            <li><span class="footer-list-icon phone-icon"></span> +250 788 207 666</li>
-            <li><span class="footer-list-icon location-icon"></span> Kigali, Rwanda</li>
-          </ul>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-title">Contact Information</div>
+                <ul class="footer-list">
+                    <li>✉️ ngogasandra1@gmail.com</li>
+                    <li>📞 +250 788 207 666</li>
+                    <li>📍 Kigali, Rwanda</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="footer-title">Quick Links</div>
+                <ul class="footer-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#reflection">Reflection Essay</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="footer-title">Connect</div>
+                <a class="footer-linkedin" href="https://www.linkedin.com/in/ngoga-sandra/" target="_blank">LinkedIn Profile</a>
+            </div>
         </div>
-        <div class="footer-col">
-          <div class="footer-icon star-icon"></div>
-          <div class="footer-title">Quick Links</div>
-          <ul class="footer-list">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#resume">Resume</a></li>
-            <li><a href="#reflection">Reflection Essay</a></li>
-          </ul>
+        <div class="footer-bottom">
+            <div>© 2025 Ngoga Sandra. All rights reserved.</div>
         </div>
-        <div class="footer-col">
-          <div class="footer-icon heart-icon"></div>
-          <div class="footer-title">Connect</div>
-          <div class="footer-connect">
-            <a class="footer-linkedin" href="https://www.linkedin.com/in/ngoga-sandra/" target="_blank">LinkedIn Profile</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="footer-copyright">© 2025 Ngoga Sandra. All rights reserved.</div>
-      </div>
     </footer>
-    <!-- End Footer Section -->
 
     <script>
-        // Simple hamburger menu toggle
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.getElementById('hamburger');
-            const nav = document.querySelector('.nav-right');
+            const navRight = document.getElementById('navRight');
             
-            console.log('Elements found:', hamburger, nav);
-            
-            hamburger.onclick = function() {
-                console.log('Hamburger clicked!');
-                nav.classList.toggle('active');
-                hamburger.classList.toggle('active');
-                console.log('Nav active:', nav.classList.contains('active'));
-            };
+            if (hamburger && navRight) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navRight.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                const navLinks = navRight.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        navRight.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!hamburger.contains(event.target) && !navRight.contains(event.target)) {
+                        hamburger.classList.remove('active');
+                        navRight.classList.remove('active');
+                    }
+                });
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
